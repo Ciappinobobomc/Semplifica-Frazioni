@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Semplifica Frazioni Online</title>
+        <script>
+            function mcd(a , b){
+                while (b != 0) {
+                    var resto = a % b;
+                    a = b;
+                    b = resto;
+                }
+                return a;
+            }
+
+            function semplifica(){
+                var numeratore = parseInt(document.getElementById("Numeratore").value);
+                var denominatore = parseInt(document.getElementById("Denominatore").value);
+
+                var mmcd = mcd(numeratore,denominatore)
+                
+                var testo = document.getElementById("risultato")
+                var testomcd = document.getElementById("mcddd")
+
+                var nm = numeratore / mmcd;
+                var dn = denominatore / mmcd;
+
+                testo.innerHTML = nm.toString() + "/" + dn.toString();
+                testomcd.innerHTML = mmcd.toString()
+                //document.write(numeratore.toString() + "/" + denominatore.toString());
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <h1>Semplifica Frazioni Online</h1>
+        <br>
+        <br>
+        <input type="number" id="Numeratore" name="Numeratore" placeholder="Numeratore">
+        <input type="number" id="Denominatore" name="Denominatore" placeholder="Denominatore">
+        <br>
+        <button type="button" onclick="semplifica()">Semplifica!</button>
+        <br>
+        <p id="risultato">Il risultato andrà qua.</p>
+        <br>
+        <p id="mcddd" >L'mcd utilizzato andrà qua.</p>
+    </body>
+</html>
